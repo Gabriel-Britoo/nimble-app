@@ -11,7 +11,7 @@ const RealizarLogin = ({ navigation }) => {
         const auth = getAuth(app);
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
-                navigation.navigate('Tabs'); // <- Vai para a tela de tabs
+                navigation.navigate('Tabs');
             })
             .catch(error => {
                 alert('Email ou senha inválidos');
@@ -20,7 +20,7 @@ const RealizarLogin = ({ navigation }) => {
     };
 
     const cadastrar = () => {
-        console.log("Em desenvolvimento");
+        navigation.navigate("Cadastrar");
     };
 
     return (
@@ -28,7 +28,7 @@ const RealizarLogin = ({ navigation }) => {
             <View style={{width: '100%', justifyContent: 'center', alignItems: 'center', flex: 1, paddingHorizontal: 20}}>
                 <Image
                     style={styles.logo}
-                    source={require('../../assets/nimble-logo.png')}
+                    source={require('../../src/assets/nimble-logo.png')}
                 />
                 <TextInput
                     style={styles.input}
@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
     cadastrar: {
         height: 60,
         borderTopWidth: 1.5,
+        borderBottomWidth: 0,
         borderTopColor: 'rgba(255, 255, 255, 0.7)',
         width: '100%',
         justifyContent: 'center',

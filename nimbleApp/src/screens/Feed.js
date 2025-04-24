@@ -11,10 +11,10 @@ export default function Feed({ navigation }) {
         }}>
             <StatusBar></StatusBar>
             <Text>Feed</Text>
-            <PostImages
+            {/* <PostImages
                 postId='euAmoRoblox'
             />
-            <PostImages postId='euAmoMuitoMaisRoblox' />
+            <PostImages postId='euAmoMuitoMaisRoblox' /> */}
         </View>
     );
 }

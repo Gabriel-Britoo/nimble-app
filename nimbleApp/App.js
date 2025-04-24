@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Login from './src/screens/Login';
 import Feed from './src/screens/Feed';
 import CriarPost from './src/screens/CriarPost.js';
+import Cadastrar from './src/screens/Cadastrar';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -45,6 +46,7 @@ export default function App() {
         <NavigationContainer>
             <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Login" component={Login} />
+                <Stack.Screen name="Cadastrar" component={Cadastrar} />
                 <Stack.Screen name="Tabs" component={TabsNavigator} />
             </Stack.Navigator>
         </NavigationContainer>
