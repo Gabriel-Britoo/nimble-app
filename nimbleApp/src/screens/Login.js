@@ -25,30 +25,32 @@ const RealizarLogin = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Image
-                style={styles.logo}
-                source={require('../../assets/nimble-logo.png')}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="E-mail"
-                placeholderTextColor="#ccc"
-                onChangeText={setEmail}
-                value={email}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Senha"
-                placeholderTextColor="#ccc"
-                secureTextEntry
-                onChangeText={setPassword}
-                value={password}
-            />
-            <TouchableOpacity style={styles.button} onPress={tentarLogar}>
-                <Text style={styles.buttonText}>Entrar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={cadastrar}>
-                <Text style={styles.linkText}>Cadastrar-se</Text>
+            <View style={{width: '100%', justifyContent: 'center', alignItems: 'center', flex: 1, paddingHorizontal: 20}}>
+                <Image
+                    style={styles.logo}
+                    source={require('../../assets/nimble-logo.png')}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="E-mail"
+                    placeholderTextColor="#ccc"
+                    onChangeText={setEmail}
+                    value={email}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Senha"
+                    placeholderTextColor="#ccc"
+                    secureTextEntry
+                    onChangeText={setPassword}
+                    value={password}
+                />
+                <TouchableOpacity style={styles.button} onPress={tentarLogar}>
+                    <Text style={styles.buttonText}>Entrar</Text>
+                </TouchableOpacity>
+            </View>
+            <TouchableOpacity style={styles.cadastrar} onPress={cadastrar}>
+                <Text style={styles.signText}>Não possui uma conta?<Text style={styles.linkText}>Cadastre-se</Text></Text>
             </TouchableOpacity>
         </View>
     );
@@ -60,7 +62,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#1e1e1e',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingHorizontal: 20,
     },
     logo: {
         width: 120,
@@ -71,34 +72,50 @@ const styles = StyleSheet.create({
     },
     input: {
         width: '100%',
-        height: 50,
+        height: 40,
         backgroundColor: '#2a2a2a',
-        borderRadius: 10,
+        borderRadius: 6,
         paddingHorizontal: 15,
         color: '#fff',
         marginBottom: 20,
         borderWidth: 1,
         borderColor: '#444',
+        fontSize: 16,
     },
     button: {
         width: '100%',
-        height: 50,
+        height: 40,
         backgroundColor: '#22ADFF',
-        borderRadius: 10,
+        borderRadius: 6,
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: 15,
+        marginTop: 10,
     },
     buttonText: {
         color: '#fff',
         fontSize: 18,
         fontWeight: 'bold',
     },
+    cadastrar: {
+        height: 60,
+        borderTopWidth: 1.5,
+        borderTopColor: 'rgba(255, 255, 255, 0.7)',
+        width: '100%',
+        justifyContent: 'center',
+        alignContent: 'center',
+    },
+    signText: {
+        color: 'rgba(255, 255, 255, 0.84)',
+        fontSize: 15,
+        fontWeight: 'semibold',
+        marginHorizontal: 'auto',
+    },
     linkText: {
-        color: '#aaa',
-        fontSize: 16,
-        fontWeight: 'bold',
-        marginTop: 10,
+        color: 'rgb(0, 153, 255)',
+        fontSize: 15,
+        fontWeight: 'semibold',
+        marginLeft: 5,
     },
 });
 
