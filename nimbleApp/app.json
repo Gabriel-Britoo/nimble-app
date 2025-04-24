@@ -4,11 +4,11 @@
     "slug": "nimbleApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/nimble-logo.png",
+    "icon": "./src/assets/nimble-logo.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/nimble-logo.png",
+      "image": "./src/assets/nimble-logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#2a2a2a"
     },
@@ -17,12 +17,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/nimble-logo.png",
+        "foregroundImage": "./src/assets/nimble-logo.png",
         "backgroundColor": "#2a2a2a"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./src/assets/favicon.png"
     }
   }
 }

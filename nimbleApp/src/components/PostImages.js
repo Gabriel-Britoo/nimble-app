@@ -6,17 +6,20 @@ const BUCKET_NAME = "nimble-app-storage";
 const BASE_FOLDER = "post-images";
 const IMAGE_REGEXP = /\.(jpg|jpeg|png)/i;
 
-const WINDOW_DIMENSIONS = Dimensions.get("window")
-
 /**
  * @param {{
 *      style: import("react-native").StyleProp<import("react-native").ViewStyle>,
+*      imageStyle: import("react-native").StyleProp<import("react-native").ImageStyle>,
 *      postId: string
 * }} param0 
 */
-export default function PostImages({ postId }) {
+export default function PostImages({ postId, style = {}, imageStyle = {} }) {
     const [ loading, setLoading ] = useState(true);
     const [ images, setImages ] = useState([]);
+
+    let { width, height } = style;
+    if (!width) width = Dimensions.get("window").width
+    if (!height) height = images.length > 0 ? 240 : 0;
 
     useEffect(() => {
         (async () => {
@@ -42,21 +45,22 @@ export default function PostImages({ postId }) {
 
     console.log(images);
 
-    return (<View style={{ width: WINDOW_DIMENSIONS.width }}>
+    return (<View style={{ width: width }}>
         {
             loading ?
             <ActivityIndicator/> :
             <ScrollView
                 horizontal={true}
-                style={{ flexDirection: "row", width: WINDOW_DIMENSIONS.width, height: 240 }}
+                style={{ flexDirection: "row", width: width, height: height, ...style }}
                 pagingEnabled={true}
                 showsHorizontalScrollIndicator={false}
             >
                 {
                     images.map(image => <Image
                         style={{
-                            width: WINDOW_DIMENSIONS.width,
-                            height: WINDOW_DIMENSIONS.width
+                            width: width,
+                            height: width,
+                            ...imageStyle
                         }}
                         source={{ uri: image.url }}
                         key={image.name}

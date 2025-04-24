@@ -34,7 +34,7 @@ export default function ProfileLogo({ userId, style }) {
                         url: `https://${BUCKET_NAME}.s3.us-east-1.amazonaws.com/${imageFile.Key}`
                     } : {
                         name: "no-profile-picture",
-                        source: require("../../assets/nimble-logo.png")
+                        source: require("../assets/nimble-logo.png")
                     };
 
                 setImage(imageURL);
