@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Login from './src/screens/Login';
 import Feed from './src/screens/Feed';
+import CriarPost from './src/screens/CriarPost.js';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -21,6 +22,16 @@ function TabsNavigator() {
                     tabBarLabel: 'Início',
                     tabBarIcon: ({ focused }) => (
                         <Icon name="home" size={30} color={focused ? "#383B43" : "#8e8e8f"} />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="Postar"
+                component={CriarPost}
+                options={{
+                    tabBarLabel: "Postar",
+                    tabBarIcon: ({ focused }) => (
+                        <Icon name="plus" size={30} color={focused ? "#383B43" : "#8e8e8f"} />
                     ),
                 }}
             />
