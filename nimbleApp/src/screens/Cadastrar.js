@@ -14,23 +14,23 @@ const registrarUsuario = async (email, password, nome, imagemUri) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    const filename = imagemUri.substring(imagemUri.lastIndexOf("/") + 1);
-    const blob = await fetch(imagemUri).then((response) => response.blob());
+    // Se imagemUri não foi fornecida, usa a imagem padrão
+    const imageToUpload = imagemUri || require('../../src/assets/default-user.png');
+    const filename = imageToUpload.substring(imageToUpload.lastIndexOf("/") + 1);
+    const blob = await fetch(imageToUpload).then((response) => response.blob());
 
     const uploadParams = {
         Bucket: "nimble-app-storage",
-        Key: `profile-images/${user.uid}/${filename}`,
+        Key: `profile-images/${user.uid}.jpg`,
         Body: blob,
         ContentType: "image/jpeg",
     };
 
     const uploadResult = await s3.upload(uploadParams).promise();
-    const photoURL = uploadResult.Location;
 
     await setDoc(doc(firestore, "users", user.uid), {
         nome,
         email,
-        photoURL,
     });
 };
 
@@ -53,12 +53,12 @@ export default function Cadastro({ navigation }) {
     };
 
     const handleRegister = async () => {
-        if (email && password && nome && imagemUri) {
+        if (email && password && nome) {
             setLoading(true);
             try {
                 await registrarUsuario(email, password, nome, imagemUri);
                 Alert.alert("Sucesso", "Usuário registrado com sucesso!");
-                navigation.navigate("Feed");
+                navigation.navigate("Tabs");
             } catch (error) {
                 console.error("Erro ao registrar usuário:", error);
                 Alert.alert("Erro", "Não foi possível registrar o usuário.");
@@ -77,12 +77,10 @@ export default function Cadastro({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center', flex: 1, paddingHorizontal: 20 }}>
-                {imagemUri && (
-                    <Image
-                    source={imagemUri ? { uri: imagemUri } : require('../assets/default-user.png')}
+                <Image
+                    source={imagemUri ? { uri: imagemUri } : require('../../src/assets/default-user.png')}
                     style={styles.imagePreview}
-                  />
-                )}
+                />
 
                 <TouchableOpacity style={styles.imageBtn} onPress={pickImage}>
                     <Text style={styles.imageBtnText}>

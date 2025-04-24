@@ -53,7 +53,8 @@ export default function ProfileLogo({ userId, style }) {
             <Image
                 style={{
                     width: style?.width ?? 48,
-                    height: style?.height ?? 48
+                    height: style?.height ?? 48,
+                    borderRadius: 70,
                 }}
                 resizeMode="cover"
                 source={image.url ? { uri: image.url } : image.source}
