@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Login from './src/screens/Login';
 import Feed from './src/screens/Feed';
+import Cadastrar from './src/screens/Cadastrar';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,7 +25,6 @@ function TabsNavigator() {
                     ),
                 }}
             />
-            {/* Você pode adicionar mais telas aqui, tipo Perfil, Configurações etc */}
         </Tab.Navigator>
     );
 }
@@ -34,6 +34,7 @@ export default function App() {
         <NavigationContainer>
             <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Login" component={Login} />
+                <Stack.Screen name="Cadastrar" component={Cadastrar} />
                 <Stack.Screen name="Tabs" component={TabsNavigator} />
             </Stack.Navigator>
         </NavigationContainer>
